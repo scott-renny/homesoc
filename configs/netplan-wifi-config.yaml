@@ -1,0 +1,43 @@
+# /etc/netplan/00-installer-config.yaml
+#
+# WiFi configuration for the Dell Latitude E7250 homelab server.
+# Required because the laptop's ethernet port has a hardware fault
+# (see incidents/001-002-wifi-ethernet-hardware.md) — WiFi is the
+# only viable network path for this machine.
+#
+# IMPORTANT — YAML is whitespace-sensitive. Every indent level below
+# is exactly 2 spaces. Mixing tabs/spaces or inconsistent indentation
+# will cause "Invalid YAML: inconsistent indentation" errors.
+# (see incidents/005-006-netplan-wpasupplicant.md for the exact error
+# this produced and how it was diagnosed)
+#
+# Apply changes with: sudo netplan apply
+# Set correct permissions first: sudo chmod 600 00-installer-config.yaml
+#   (this file contains a WiFi password in plaintext — restrict read access)
+
+network:
+  version: 2
+  renderer: networkd
+  wifis:
+    wlp2s0:                          # WiFi adapter name — find yours with: ip link show
+      dhcp4: true
+      optional: true
+      access-points:
+        "YOUR_NETWORK_NAME_HERE":    # Replace with your actual WiFi SSID
+          password: "YOUR_PASSWORD_HERE"   # Replace with your actual WiFi password
+
+# ── PREREQUISITE ──
+# This config will NOT work without wpasupplicant installed.
+# Ubuntu Server does not include it by default (Ubuntu Desktop does).
+# Install it first:
+#   sudo apt install wpasupplicant -y
+#
+# Without wpasupplicant, the adapter will show as UP with an IPv6
+# link-local address but will never receive an IPv4 address via DHCP —
+# this was INC-006 in the incident log.
+
+# ── VERIFY CONNECTION ──
+# After running netplan apply, confirm with:
+#   ip addr show wlp2s0
+# Look for a line starting with "inet " (not "inet6") — that confirms
+# a real IPv4 address was assigned by your router via DHCP.
