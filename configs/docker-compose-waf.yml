@@ -1,0 +1,62 @@
+# docker-compose.yml — WAF + Nginx Web Service
+#
+# Deploys the public-facing attack surface behind ModSecurity WAF.
+# All inbound HTTP/HTTPS traffic passes through ModSecurity before
+# reaching Nginx. Network-level IP banning (CrowdSec) sits in front
+# of this entire stack via iptables — not shown here, see configs/crowdsec-config.yaml
+#
+# Deploy with: docker compose up -d
+
+version: '3'
+
+services:
+  waf:
+    image: owasp/modsecurity-crs:nginx-alpine
+    ports:
+      - "80:8080"
+      - "443:8443"
+    environment:
+      # Paranoia level 1 = blocks obvious attacks, minimal false positives
+      # Increase to 2 once traffic patterns are tuned and whitelisted
+      - PARANOIA=1
+      - ANOMALY_INBOUND=5
+      - ANOMALY_OUTBOUND=4
+      # BACKEND points to the 'web' service below by its Docker service name —
+      # Docker's internal DNS resolves this automatically, no IP needed
+      - BACKEND=http://web:80
+    depends_on:
+      - web
+    restart: unless-stopped
+    networks:
+      - waf-net
+
+  web:
+    image: nginx:alpine
+    volumes:
+      - ./html:/usr/share/nginx/html
+    restart: unless-stopped
+    networks:
+      - waf-net
+
+networks:
+  waf-net:
+    driver: bridge
+
+# ── NOTES ──
+#
+# Port mapping explained:
+#   "80:8080"  → external port 80 (standard HTTP) maps to container port 8080
+#   "443:8443" → external port 443 (standard HTTPS) maps to container port 8443
+#   The WAF container listens internally on 8080/8443, then proxies clean
+#   traffic to the 'web' container on its internal port 80.
+#
+# This caused INC-008 in the incident log: CrowdSec's local API also
+# defaults to port 8080 on the HOST, which is a different port namespace
+# than the container-internal 8080 above — but initially caused confusion
+# during debugging. CrowdSec was moved to port 8090 to avoid any ambiguity.
+#
+# To point your own domain at this stack:
+#   1. Get a free subdomain at https://www.duckdns.org
+#   2. Point it at your public IP (find yours with: curl ifconfig.me)
+#   3. Port forward 80 and 443 on your router to this server's LOCAL IP
+#      (do NOT hardcode your local IP here — Docker handles internal routing)
