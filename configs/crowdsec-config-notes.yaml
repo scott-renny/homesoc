@@ -1,0 +1,72 @@
+# CrowdSec Configuration Notes
+#
+# Two files were edited to resolve a port conflict between CrowdSec's
+# local API and the ModSecurity WAF Docker container, both of which
+# defaulted to port 8080. See incidents/ for the full incident this
+# resolved (CrowdSec failing with "address already in use").
+
+# ───────────────────────────────────────────────
+# FILE 1: /etc/crowdsec/config.yaml
+# ───────────────────────────────────────────────
+# Changed the local API listen address from the default 8080 to 8090
+# to avoid colliding with the WAF container's host port mapping.
+
+# BEFORE:
+#   api:
+#     server:
+#       listen_uri: 127.0.0.1:8080
+#
+# AFTER:
+api:
+  server:
+    listen_uri: 127.0.0.1:8090
+
+# ───────────────────────────────────────────────
+# FILE 2: /etc/crowdsec/local_api_credentials.yaml
+# ───────────────────────────────────────────────
+# Must match the port above — this is the client-side config that
+# tells CrowdSec's own components where to find the local API.
+
+# BEFORE:
+#   url: http://127.0.0.1:8080
+#
+# AFTER:
+url: http://127.0.0.1:8090
+# login and password fields are auto-generated on install — never
+# commit these values to a public repo if you include the full file
+
+# ───────────────────────────────────────────────
+# COLLECTIONS INSTALLED
+# ───────────────────────────────────────────────
+# Run these after the base crowdsec package is installed and running:
+#
+#   sudo cscli collections install crowdsecurity/nginx
+#   sudo cscli collections install crowdsecurity/sshd
+#   sudo cscli collections install crowdsecurity/linux
+#   sudo cscli collections install crowdsecurity/base-http-scenarios
+#   sudo cscli collections install crowdsecurity/http-cve
+#   sudo cscli collections install crowdsecurity/whitelist-good-actors
+#
+# Note: specific CVE scenario names change over time as CrowdSec's
+# community Hub gets updated. Always check current names first:
+#   sudo cscli scenarios list -a
+#
+# (CVE-2021-41773 and CVE-2021-26855 were both superseded by the time
+# this lab was built — see incidents/ for the exact replacement names
+# CrowdSec suggested and what was actually installed)
+
+# ───────────────────────────────────────────────
+# FIREWALL BOUNCER (used instead of the Nginx bouncer)
+# ───────────────────────────────────────────────
+# The standard crowdsec-nginx-bouncer package requires a system-level
+# Nginx install with Lua module support. This lab runs Nginx inside
+# Docker, so that dependency can never be satisfied.
+#
+# Install the iptables-based bouncer instead — operates at the kernel
+# level, blocking banned IPs before they reach Nginx, ModSecurity, or
+# any other service at all:
+#
+#   sudo apt install crowdsec-firewall-bouncer-iptables -y
+#
+# Verify it registered correctly:
+#   sudo cscli bouncers list
