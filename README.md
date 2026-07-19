@@ -1,20 +1,66 @@
-# HomeSOC: Building a Real Security Operations Center From Scratch
+# 🛡️ HomeSOC
 
-> A live, ongoing build log of a self-hosted SOC stack — real hardware, real attacks, real incident documentation. No simulations, no cloud sandbox. Updated as the project progresses.
+## Building a Real Security Operations Center From Scratch
 
-**Status:** 🟢 Live · Stack operational · Phase 08 of 11 complete
-**Last updated:** June 13, 2026
+> [!IMPORTANT]
+> ### 📦 Legacy Engineering Portfolio Project
+>
+> This repository documents one of the most comprehensive cybersecurity engineering projects I completed while developing my home lab.
+>
+> Rather than deleting or replacing it, I have intentionally preserved it as part of my **Legacy Project Archive** to document my growth as an infrastructure and cybersecurity engineer.
+>
+> Every configuration, incident report, troubleshooting step, and lesson learned has been intentionally preserved because understanding the engineering process is just as valuable as the finished solution.
+>
+> The knowledge gained from this project directly influenced the engineering standards used throughout my current portfolio.
+>
+> My current engineering efforts are focused on:
+>
+> - 🛡️ Cyber Operations Center Engineering Program *(Flagship Project)*
+> - 🏗️ Project Atlas
+> - 🐉 Project Hydra
+> - 🏛️ Project Olympus
+> - 🔥 Project Hestia
 
 ---
 
-## Why this exists
+![Status](https://img.shields.io/badge/Status-Legacy_Project-6f42c1)
+![Platform](https://img.shields.io/badge/Platform-Ubuntu-E95420)
+![Architecture](https://img.shields.io/badge/Architecture-Docker-blue)
+![SIEM](https://img.shields.io/badge/SIEM-Wazuh-0052CC)
 
-I'm a junior cybersecurity student working toward a SOC analyst role and CompTIA Security+ certification. Instead of only doing course labs, I bought a used laptop, wiped it, and built a real defensive security stack from the ground up — then exposed it to the actual internet to see what would happen.
+# Project Overview
 
-Within the first hour of going live, the stack had already logged 693 security events, including reconnaissance scans and exploitation attempts mapped to MITRE ATT&CK techniques. Every incident below — including every error I hit along the way — is documented honestly. The mistakes are part of the portfolio, not hidden from it.
+HomeSOC was created to design, deploy, secure, monitor, and document a self-hosted Security Operations Center using enterprise-inspired defensive technologies on real hardware.
+
+## Project at a Glance
+
+| Category | Details |
+|---|---|
+| Status | Legacy Portfolio Project |
+| Platform | Ubuntu Server 22.04 |
+| Architecture | Docker |
+| Focus | Blue Team / SOC Engineering |
+| Documentation | Complete |
+| Incident Reports | Included |
+
+## Key Accomplishments
+
+- Built a complete self-hosted SOC
+- Deployed layered security architecture
+- Implemented Wazuh SIEM
+- Protected services with ModSecurity and CrowdSec
+- Documented real engineering incidents
+
+## Engineering Principles
+
+- Build on real hardware
+- Document every success and failure
+- Preserve troubleshooting history
+- Security first
 
 ---
 
+## Architecture
 ## Architecture
 
 ```
@@ -240,3 +286,20 @@ Follow the in-progress phases at the top of this README, or check the [commit hi
 
 Built by Scott — junior cybersecurity student, Security+ candidate.
 [LinkedIn](#) · [GitHub](#)
+
+---
+
+## Lessons Carried Forward
+
+This project influenced my documentation standards, infrastructure design, security hardening practices, incident response methodology, and engineering workflow across my current portfolio.
+
+---
+
+## Portfolio Navigation
+
+- 📦 Legacy Project Archive
+- 🛡️ Cyber Operations Center Engineering Program
+- 🏗️ Project Atlas
+- 🐉 Project Hydra
+- 🏛️ Project Olympus
+- 🔥 Project Hestia
