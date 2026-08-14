@@ -17,9 +17,11 @@
 >
 > - 🛡️ Cyber Operations Center Engineering Program *(Flagship Project)*
 > - 🏗️ Project Atlas
-> - 🐉 Project Hydra
-> - 🏛️ Project Olympus
-> - 🔥 Project Hestia
+> - 📡 [NET-WATCH](https://github.com/scott-renny/netwatch)
+> - 🪖 [Project Hermes](https://github.com/scott-renny/project-hermes)
+> - 🐺 [Project Cerberus](https://github.com/scott-renny/project-cerberus-build)
+> - ⚔️ [Project Ares](https://github.com/scott-renny/project_ares)
+> - ☀️ [Project Apollo](https://github.com/scott-renny/project-apollo)
 
 ---
 
@@ -300,6 +302,8 @@ This project influenced my documentation standards, infrastructure design, secur
 - 📦 Legacy Project Archive
 - 🛡️ Cyber Operations Center Engineering Program
 - 🏗️ Project Atlas
-- 🐉 Project Hydra
-- 🏛️ Project Olympus
-- 🔥 Project Hestia
+- 📡 [NET-WATCH](https://github.com/scott-renny/netwatch)
+- 🪖 [Project Hermes](https://github.com/scott-renny/project-hermes)
+- 🐺 [Project Cerberus](https://github.com/scott-renny/project-cerberus-build)
+- ⚔️ [Project Ares](https://github.com/scott-renny/project_ares)
+- ☀️ [Project Apollo](https://github.com/scott-renny/project-apollo)
