@@ -55,7 +55,7 @@ After fixing the YAML syntax, `netplan apply` succeeded with no errors, but the 
 ```
 user@homelabserver:~$ ip addr show wlp2s0
 4: wlp2s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ...
-    link/ether 18:4f:32:f3:54:19 brd ff:ff:ff:ff:ff:ff
+    link/ether 02:00:5e:10:00:01 brd ff:ff:ff:ff:ff:ff
     inet6 fe80::1a4f:32ff:fef3:5419/64 scope link
 ```
 Adapter shows `UP` and `LOWER_UP` (physical link active) but only has an IPv6 link-local address — no IPv4 `inet` line. Running `sudo dhclient wlp2s0` manually hung indefinitely with no response.
