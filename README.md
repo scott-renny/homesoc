@@ -63,7 +63,6 @@ HomeSOC was created to design, deploy, secure, monitor, and document a self-host
 ---
 
 ## Architecture
-## Architecture
 
 ```
 INTERNET
@@ -280,14 +279,14 @@ sudo netplan apply
 
 ## What's next
 
-Follow the in-progress phases at the top of this README, or check the [commit history](#) for incremental updates. New incident write-ups, screenshots, and MITRE ATT&CK mappings are added as the lab catches new real-world attack traffic.
+Follow the in-progress phases at the top of this README, or check the [commit history](https://github.com/scott-renny/homesoc/commits/main) for incremental updates. New incident write-ups, screenshots, and MITRE ATT&CK mappings are added as the lab catches new real-world attack traffic.
 
 ---
 
 ## Contact
 
-Built by Scott — junior cybersecurity student, Security+ candidate.
-[LinkedIn](#) · [GitHub](#)
+Built by Scott — junior cybersecurity student, Security+ certified cybersecurity practitioner.
+[LinkedIn](https://www.linkedin.com/in/scottrenny) · [GitHub](https://github.com/scott-renny)
 
 ---
 
