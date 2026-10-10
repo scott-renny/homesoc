@@ -1,0 +1,32 @@
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Runtime and local configuration
+.env
+.env.*
+!.env.example
+*.log
+*.pid
+*.bak
+*.tmp
+
+# Secrets and key material (never commit)
+*.pem
+*.key
+*.pfx
+*.kdbx
+*.ovpn
+id_rsa*
+id_ed25519*
+*.pcap
+*.pcapng
