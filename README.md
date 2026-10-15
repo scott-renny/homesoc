@@ -1,4 +1,18 @@
-# 🛡️ HomeSOC
+<div align="center">
+
+# HomeSOC
+### Security Monitoring · SIEM · Engineering Lessons
+
+![status: legacy project](https://img.shields.io/badge/status-legacy%20project-64748b?style=flat-square)
+![focus: security operations](https://img.shields.io/badge/focus-security%20operations-22d3ee?style=flat-square)
+
+[License](LICENSE)
+
+</div>
+
+[Building a Real Security Operations Center From Scratch](#building-a-real-security-operations-center-from-scratch) · [Project Overview](#project-overview) · [Project at a Glance](#project-at-a-glance) · [Key Accomplishments](#key-accomplishments) · [Engineering Principles](#engineering-principles) · [Architecture](#architecture)
+
+---
 
 ## Building a Real Security Operations Center From Scratch
 
@@ -25,10 +39,6 @@
 
 ---
 
-![Status](https://img.shields.io/badge/Status-Legacy_Project-6f42c1)
-![Platform](https://img.shields.io/badge/Platform-Ubuntu-E95420)
-![Architecture](https://img.shields.io/badge/Architecture-Docker-blue)
-![SIEM](https://img.shields.io/badge/SIEM-Wazuh-0052CC)
 
 # Project Overview
 
